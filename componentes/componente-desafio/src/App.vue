@@ -1,55 +1,27 @@
 <template>
   <v-app>
-    <v-navigation-drawer app>
-      <v-toolbar flat>
-        <v-list>
-          <v-list-tile>
-            <v-list-tile-title class="title">
-                Menu
-            </v-list-tile-title>
-          </v-list-tile>
-        </v-list>
-      </v-toolbar>
-
-      <v-divider></v-divider>
-
-      <v-list dense class="pt-0">
-        <v-list-item v-for="item in itensMenu" :key="item.titulo">
-          <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-icon>
-          <v-list-item-content>
-            <v-list-item-title>{{ item.titulo }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-
-    <v-app-bar app>
-        <v-toolbar-title class="headline text-uppercase">
-				<span>Desafio</span>
-				<span class="font-weight-light">Componente</span>
-        </v-toolbar-title>
-    </v-app-bar>
-
+    <app-menu />
+    <app-toolbar />
     <v-content>
-      <v-carousel>
-        <v-carousel-item
-            v-for="(item,i) in fotos"
-            :key="i"
-            :src="item.src"></v-carousel-item>
-      </v-carousel>
+      <app-carousel />
     </v-content>
-
-    <v-footer class="pa-3" app>
-      <v-spacer></v-spacer>
-      <div>Curso Vue &copy; {{ new Date().getFullYear() }}</div>
-    </v-footer>
+    <app-footer />
   </v-app>
 </template>
 
 <script>
+import Footer from './Footer.vue';
+import Carousel from './Carousel.vue';
+import Toolbar from './Toolbar.vue';
+import Menu from './Menu.vue';
+
 export default {
+  components: {
+    'app-footer': Footer,
+    'app-carousel': Carousel,
+    'app-toolbar': Toolbar,
+    'app-menu': Menu
+  },
   data() {
     return {
       itensMenu: [
